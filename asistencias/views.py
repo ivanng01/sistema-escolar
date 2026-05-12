@@ -104,18 +104,18 @@ def lista_observaciones(request, curso_id):
 
     curso = get_object_or_404(Curso, id=curso_id)
 
-    observaciones = Observacion.objects.filter(
+    alumnos = Alumno.objects.filter(
         curso=curso
-    ).order_by('-fecha_hora')
+    ).order_by('apellido', 'nombre')
 
     return render(
         request,
         'asistencias/lista_observaciones.html',
         {
             'curso': curso,
-            'observaciones': observaciones
+            'alumnos': alumnos
         }
-    )
+)
 
 def nueva_observacion(request, alumno_id, curso_id):
 
