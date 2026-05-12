@@ -18,22 +18,13 @@ from .views import (
 
 urlpatterns = [
 
+    
     path('', ver_cursos, name='inicio_principal'),
 
-    path('inicio/', ver_cursos, name='inicio'),
-
     path('asistencia/<int:curso_id>/', tomar_asistencia, name='tomar_asistencia'),
-    
-    path(
-    'asistencias/lista/<int:curso_id>/',
-    lista_asistencias,
-    name='lista_asistencias'
-    ),
-    
+    path('asistencias/lista/<int:curso_id>/', lista_asistencias, name='lista_asistencias'),
     path('cursos/', lista_cursos, name='lista_cursos'),
-    
     path('inicio/', ver_cursos, name='inicio'),
-    
     path('observaciones/', lista_cursos_observacion, name='lista_cursos_observacion'),
 
     path('observaciones/curso/<int:curso_id>/', alumnos_observacion, name='alumnos_observacion'),
