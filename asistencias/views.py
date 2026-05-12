@@ -98,22 +98,8 @@ def crear_observacion(request, alumno_id, curso_id):
     return render(request, 'asistencias/crear_observacion.html', {
         'alumno': alumno,
         'curso': curso
-    })
-
-def lista_observaciones(request, curso_id):
-
-    curso = get_object_or_404(Curso, id=curso_id)
-
-    alumnos = curso.alumnos.all().order_by('apellido', 'nombre')
-
-    return render(
-        request,
-        'asistencias/lista_observaciones.html',
-        {
-            'curso': curso,
-            'alumnos': alumnos
-        }
-    )
+    }
+)
 
 def nueva_observacion(request, alumno_id, curso_id):
 
@@ -165,6 +151,17 @@ def editar_observacion(request, observacion_id):
             'observacion': observacion
         }
 )
+
+def lista_observaciones(request, curso_id):
+
+    curso = get_object_or_404(Curso, id=curso_id)
+
+    alumnos = curso.alumnos.all().order_by('apellido', 'nombre')
+
+    return render(request, 'asistencias/lista_observaciones.html', {
+        'curso': curso,
+        'alumnos': alumnos
+    })
 
 def consultas(request):
     return render(request, 'consultas/inicio.html')
