@@ -1,4 +1,5 @@
 from django.urls import path
+from . import views
 from .views import (
     tomar_asistencia, 
     lista_cursos, 
@@ -16,6 +17,11 @@ from .views import (
     )
 
 urlpatterns = [
+
+    path('', ver_cursos, name='inicio_principal'),
+
+    path('inicio/', ver_cursos, name='inicio'),
+
     path('asistencia/<int:curso_id>/', tomar_asistencia, name='tomar_asistencia'),
     
     path(
