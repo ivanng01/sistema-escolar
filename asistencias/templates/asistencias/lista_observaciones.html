@@ -28,33 +28,14 @@
             </td>
 
             <td>
-                {% if alumno.observacion_set.last %}
-                    {{ alumno.observacion_set.last.fecha_hora }}
-                {% else %}
-                    -
-                {% endif %}
+                -
             </td>
 
             <td>
-                {% if alumno.observacion_set.last %}
-                    {{ alumno.observacion_set.last.descripcion }}
-                {% else %}
-                    Sin observaciones
-                {% endif %}
+                Sin observaciones
             </td>
 
             <td>
-
-                {% if alumno.observacion_set.last %}
-
-                    <a href="/observaciones/editar/{{ alumno.observacion_set.last.id }}/"
-                    class="text-decoration-none me-2">
-
-                        <i class="bi bi-pencil-square"></i>
-
-                    </a>
-
-                {% endif %}
 
                 <a href="/observaciones/nueva/alumno/{{ alumno.id }}/curso/{{ curso.id }}/">
 
