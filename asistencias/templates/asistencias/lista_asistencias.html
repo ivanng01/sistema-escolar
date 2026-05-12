@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1 class="mb-4">
+    Historial de asistencia
+</h1>
+
+<h3 class="mb-3">
+    {{ curso.nombre }} - {{ curso.escuela.nombre }}
+</h3>
+
+<table class="table table-striped table-hover">
+
+    <tr>
+        <th>Alumno</th>
+        <th>Fecha</th>
+        <th>Presente</th>
+    </tr>
+
+    {% for asistencia in asistencias %}
+
+        <tr>
+
+            <td>
+                {{ asistencia.alumno.apellido }}
+                {{ asistencia.alumno.nombre }}
+            </td>
+
+            <td>
+                {{ asistencia.fecha_hora }}
+            </td>
+
+            <td>
+
+                {% if asistencia.presente %}
+
+                    ✅ Presente
+
+                {% else %}
+
+                    ❌ Ausente
+
+                {% endif %}
+
+            </td>
+
+        </tr>
+
+    {% endfor %}
+
+</table>
+
+<div class="mt-2">
+    <a href="/inicio/" class="btn btn-secondary">
+        <i class="bi bi-house-door-fill"></i>
+
+            Inicio
+    </a>
+</div>
+
+{% endblock %}

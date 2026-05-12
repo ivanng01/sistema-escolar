@@ -1,0 +1,67 @@
+body {
+    background: linear-gradient(
+        180deg,
+        #14213d,
+        #1f3b5c
+        
+    );
+    min-height: 100vh;
+}
+
+.container{
+    max-width: 100% !important;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.btn-observaciones{
+    background-color: #334155;
+    color: white;
+    border: none;
+}
+
+.btn-observaciones:hover{
+    background-color: #475569;
+    color: white;
+}
+
+h1, h2, h3 {
+    color: #ffffff;
+}
+
+.card {
+    border-radius: 18px;
+    
+    background-color: #f1f5f9;
+
+    border: none;
+
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+
+    transition: 0.3s;
+    width: 100%; 
+}
+
+.card:hover{
+    
+    box-shadow: 0 12px 25px rgba(0,0,0,0.25);
+}
+
+.card h3{
+    color: #1e293b;
+    font-weight: 700;
+}
+
+.card p{
+    color: #64748b !important;
+}
+
+.text-muted {
+    color: #cbd5e1 !important;
+}
+
+.texto-secundario{
+    color: #475569;
+    font-weight: 600;
+    font-size: 1rem;
+}

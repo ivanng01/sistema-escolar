@@ -1,0 +1,27 @@
+<h1>Nueva observación</h1>
+
+<p>
+    Alumno: {{ alumno.nombre }} {{ alumno.apellido }}
+</p>
+
+<p>
+    Curso: {{ curso.nombre }}
+</p>
+
+<form method="post">
+
+    {% csrf_token %}
+
+    <textarea name="descripcion"></textarea>
+
+    <br><br>
+
+    <button type="submit">
+        Guardar observación
+    </button>
+
+</form>
+
+<a href="/inicio"> <i class="bi bi-house-door-fill"></i>
+
+        Inicio</a>

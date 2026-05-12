@@ -1,0 +1,112 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Asistencia
+{% endblock %}
+
+{% block content %}
+
+<h1 class="mb-4 text-center">
+    Asistencia - {{ curso.nombre }} - {{ curso.escuela }}
+</h1>
+
+<form method="post" class="card p-4 shadow-sm">
+
+    {% csrf_token %}
+
+    <div class="mb-4">
+
+        <label class="form-label">
+            Fecha:
+        </label>
+
+        <input
+            type="datetime-local"
+            name="fecha_hora"
+            class="form-control"
+            required>
+
+    </div>
+
+    <div class="mb-4">
+
+        <button
+            type="button"
+            onclick="marcarTodos()"
+            class="btn btn-success">
+
+            Marcar todos presentes
+
+        </button>
+
+    </div>
+
+    <div class="mb-4">
+
+        {% for alumno in alumnos %}
+
+            <div class="form-check mb-2">
+
+                <input
+                    type="checkbox"
+                    class="form-check-input checkbox-alumno"
+                    name="presentes"
+                    value="{{ alumno.id }}"
+                    id="alumno{{ alumno.id }}">
+
+                <label
+                    class="form-check-label"
+                    for="alumno{{ alumno.id }}">
+
+                    {{ alumno.nombre }} {{ alumno.apellido }}
+
+                </label>
+
+            </div>
+
+        {% endfor %}
+
+    </div>
+
+    <div class="d-flex gap-2">
+
+        <button
+            type="submit"
+            class="btn btn-primary">
+
+            Guardar asistencia
+
+        </button>
+
+        
+
+    </div>
+
+</form>
+
+<div class="mt-2">
+    <a
+            href="/inicio"
+            class="btn btn-secondary">
+
+            <i class="bi bi-house-door-fill"></i>
+            Inicio
+
+    </a>
+</div>
+
+<script>
+
+    function marcarTodos() {
+
+        let checkboxes = document.querySelectorAll('.checkbox-alumno');
+
+        checkboxes.forEach(function(checkbox) {
+            checkbox.checked = true;
+        });
+
+    }
+
+</script>
+
+{% endblock %}
