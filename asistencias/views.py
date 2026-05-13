@@ -2,7 +2,6 @@ from django.shortcuts import render
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Alumno, Curso, Asistencia, Observacion
 from django.utils import timezone
-from django.contrib import messages
 
 def tomar_asistencia(request, curso_id):
     curso = get_object_or_404(Curso, id=curso_id)
@@ -22,9 +21,7 @@ def tomar_asistencia(request, curso_id):
                 presente=presente
             )
 
-        messages.success(request, 'Asistencia registrada correctamente.')
-
-        return redirect('inicio')
+            return redirect('/inicio/?mensaje=asistencia')
 
     return render(request, 'asistencias/asistencia.html', {
         'curso': curso,
@@ -121,8 +118,7 @@ def nueva_observacion(request, alumno_id, curso_id):
             descripcion=descripcion
         )
 
-        messages.success(request, 'Observación registrada correctamente.')
-        return redirect(f'/observaciones/lista/{curso.id}/')
+        return redirect(f'/observaciones/lista/{curso.id}/?mensaje=observacion_nueva')
 
     return render(request, 'asistencias/nueva_observacion.html', {
         'alumno': alumno,
@@ -144,10 +140,8 @@ def editar_observacion(request, observacion_id):
 
         observacion.save()
 
-        messages.success(request, 'Observación editada correctamente.')
-
         return redirect(
-            f'/observaciones/lista/{observacion.curso.id}/'
+        f'/observaciones/lista/{observacion.curso.id}/?mensaje=observacion_editada'
         )
 
     return render(
