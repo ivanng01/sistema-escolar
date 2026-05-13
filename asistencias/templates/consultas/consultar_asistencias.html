@@ -135,9 +135,17 @@
                         </td>
 
                         <td>
-                            {{ asistencia.presente }}
-                        </td>
+                        {% if asistencia.presente %}
 
+                    ✅ Presente
+
+                {% else %}
+
+                    ❌ Ausente
+
+                {% endif %}
+
+                            </td>
                     </tr>
 
                 {% empty %}

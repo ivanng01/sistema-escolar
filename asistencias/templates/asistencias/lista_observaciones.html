@@ -28,19 +28,33 @@
             </td>
 
             <td>
-                -
+                {% if alumno.observacion_set.last %}
+                    {{ alumno.observacion_set.last.fecha_hora }}
+                {% else %}
+                    -
+                {% endif %}
             </td>
 
             <td>
-                Sin observaciones
+                {% if alumno.observacion_set.last %}
+                    {{ alumno.observacion_set.last.descripcion }}
+                {% else %}
+                    Sin observaciones
+                {% endif %}
             </td>
 
             <td>
 
-                <a href="/observaciones/nueva/alumno/{{ alumno.id }}/curso/{{ curso.id }}/">
+                {% if alumno.observacion_set.last %}
+                    <a href="/observaciones/editar/{{ alumno.observacion_set.last.id }}/"
+                       class="text-decoration-none me-2">
+                        <i class="bi bi-pencil-square"></i>
+                    </a>
+                {% endif %}
 
+                <a href="/observaciones/nueva/alumno/{{ alumno.id }}/curso/{{ curso.id }}/"
+                   class="text-decoration-none">
                     <i class="bi bi-plus-circle"></i>
-
                 </a>
 
             </td>
@@ -50,11 +64,9 @@
     {% empty %}
 
         <tr>
-
             <td colspan="4">
                 No hay alumnos registrados.
             </td>
-
         </tr>
 
     {% endfor %}
@@ -64,11 +76,8 @@
 <br>
 
 <a href="/inicio/" class="btn btn-secondary">
-
     <i class="bi bi-house-door-fill"></i>
-
     Inicio
-
 </a>
 
 {% endblock %}
