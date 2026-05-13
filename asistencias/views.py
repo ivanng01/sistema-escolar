@@ -4,14 +4,19 @@ from .models import Alumno, Curso, Asistencia, Observacion
 from django.utils import timezone
 
 def tomar_asistencia(request, curso_id):
+
     curso = get_object_or_404(Curso, id=curso_id)
+
     alumnos = curso.alumnos.all()
 
     if request.method == 'POST':
+
         fecha_hora = request.POST.get('fecha_hora')
+
         presentes_ids = request.POST.getlist('presentes')
 
         for alumno in alumnos:
+
             presente = str(alumno.id) in presentes_ids
 
             Asistencia.objects.create(
@@ -21,7 +26,7 @@ def tomar_asistencia(request, curso_id):
                 presente=presente
             )
 
-            return redirect('/inicio/?mensaje=asistencia')
+        return redirect('/inicio/?mensaje=asistencia')
 
     return render(request, 'asistencias/asistencia.html', {
         'curso': curso,
